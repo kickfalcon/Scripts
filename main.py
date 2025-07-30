@@ -28,7 +28,11 @@ payload = {
 # Construct the full URL for the API request
 
 url = f"{base_url}{endpoint}"
-integrations_json_data = rj.connect_to_api(url, payload=payload, headers=headers)
+integrations_json_data = rj.connect_to_api(
+    url, 
+    payload=payload, 
+    headers=headers
+    )
 
 # Setting the info
 rj.connect_to_api()
@@ -59,7 +63,7 @@ alert_fill = px.styles.PatternFill(
 # sheet = excel_file.get_sheet_by_name('Sheet1')
 
 # Getting the data from the first row of the sheet
-for row in sheet.iter_rows(min_row=1, max_col=1, max_row=sheet.max_row):
+for row in sheet.iter_rows(min_row=4, max_col=1, max_row=sheet.max_row):
     for cell in row:
         # Getting the integration versions
         gen2_integration = sheet.cell(row=cell.row, column=2).value
