@@ -1,14 +1,37 @@
 import openpyxl as px
 import readjson as rj
+from dotenv import load_dotenv
+import os
 
 # File location
 
-path = "C:\\Users\\light\\Downloads"
-file_name = "IntegrationsSampleData.xlsx"
+path = os.getenv('FILE_PATH')
+file_name = os.getenv('FILE_NAME')
 file_path = f"{path}\\{file_name}"
 
-# Setting the info
+# API URL and headers
+# Load environment variables from .env file
+load_dotenv()
 
+# Define the base URL and endpoint for the API
+base_url = os.getenv('BASE_URL')
+endpoint = '/ic/api/integration/v1/integrations'
+headers = {
+    "Content-Type": "application/json",
+    # "Authorization":"Bearer access_token"
+}
+payload = {
+    "q": {
+        "status":"ACTIVATED"
+    }
+}
+# Construct the full URL for the API request
+
+url = f"{base_url}{endpoint}"
+integrations_json_data = rj.connect_to_api(url, payload=payload, headers=headers)
+
+# Setting the info
+rj.connect_to_api()
 excel_file = px.load_workbook(file_path)
 sheet = excel_file.active
 
