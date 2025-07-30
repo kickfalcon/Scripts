@@ -51,10 +51,11 @@ def processingJson(integration_excel_name):
                 if item["name"] == integration_excel_name:
                     return item["version"]
             except KeyError:
-                print('Integration name not found in item.')
+                print('Operation failed due to invalid data or structure.')
                 continue
             except TypeError:
-                return 'No items found.'
+                print(f'for {item['name']} no data found.')
+                continue
 
 
 # the code below is commented out because it is not used in the current context
