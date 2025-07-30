@@ -1,5 +1,8 @@
 import json, requests, os 
 from main import integrations_json_data
+from dotenv import load_dotenv
+# Load environment variables from .env file
+load_dotenv()
 # Function to connect to the API and retrieve integration data
 
 def connect_to_api(url, payload=None, headers=None):
@@ -38,7 +41,7 @@ def processingJson(integration_excel_name):
         for item in integrations_json_data["items"]:
             try:   
                 if item["name"] == integration_excel_name:
-                    print(item["version"]) 
+                    return item["version"]
             except KeyError:
                 print('Invalid JSON structure')
                 continue
