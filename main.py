@@ -35,7 +35,6 @@ integrations_json_data = rj.connect_to_api(
     )
 
 # Setting the info
-rj.connect_to_api()
 excel_file = px.load_workbook(file_path)
 sheet = excel_file.active
 
